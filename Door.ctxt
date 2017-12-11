@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Door
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Door\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=xPos\ yPos\ isWalkable
+comment1.target=Door(int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ openClose()
+comment2.text=This\ method\ receives\ no\ parameters\ and\ allows\ the\ door\r\n\ to\ be\ opened\ and\ closed.\ (Toggles\ "walkable"\ status.)\r\n
+comment3.params=
+comment3.target=void\ toggleSprite()
+numComments=4
