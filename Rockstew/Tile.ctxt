@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Tile
+comment1.params=xPos\ yPos\ isWalkable
+comment1.target=Tile(int,\ int,\ boolean)
+comment1.text=\r\n\ Constructor\ sets\ local\ X\ and\ Y\ values,\ and\ also\ holds\ a\ boolean\ that\ tells\r\n\ the\ Map\ whether\ or\ not\ the\ tile\ is\ walkable.\r\n\ @param\ x\r\n\ @param\ y\r\n\ @param\ walkable\r\n
+comment2.params=
+comment2.target=boolean\ isWalkable()
+comment3.params=
+comment3.target=void\ act()
+numComments=4
