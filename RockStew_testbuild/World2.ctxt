@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=World2
+comment1.params=
+comment1.target=World2()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ spawne()
+comment4.params=
+comment4.target=Tile[][]\ makeLV2()
+comment5.params=
+comment5.target=void\ prepare()
+comment6.params=x\ y\ r
+comment6.target=void\ swordAt(int,\ int,\ int)
+comment7.params=
+comment7.target=void\ gameOver()
+comment8.params=
+comment8.target=void\ setNextWorld()
+numComments=9
