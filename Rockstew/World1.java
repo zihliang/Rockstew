@@ -1,3 +1,5 @@
+package Rockstew;
+
 import greenfoot.*;
 public class World1 extends World
 {

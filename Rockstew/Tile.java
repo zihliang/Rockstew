@@ -1,3 +1,5 @@
+package Rockstew;
+
 import greenfoot.*;
 public class Tile extends Actor {
     //protected Item theItem;

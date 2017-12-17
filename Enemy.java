@@ -11,7 +11,7 @@ public class Enemy extends Actor
 
     public void act() 
     {
-        checkGameOver();
+        //checkGameOver();
         updatePlayerCor();
         if(this.timer%62==0)
         {

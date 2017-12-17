@@ -6,12 +6,17 @@ public class Player extends Actor
     int swwait=0;
     World2 aWorld2;
     World2 aWorld3;
-
+    int hitCooldown = 0;
     public void act() 
     {
         doMovement(1);
         doAttack();
         changeImage();
+        hitEnemy();
+        if(this != null) 
+        {
+            hitEnemy();
+        }
     }  
 
     public void doMovement(int move){      
@@ -123,4 +128,29 @@ public class Player extends Actor
         return(getOneObjectAtOffset(xOffset, yOffset, c));
 
     }
+    
+     public void hitEnemy()
+    {
+        World myWorld = getWorld();
+        World1 world1 = (World1)myWorld;
+        System.out.println(this);
+        if(this.getOneIntersectingObject(Enemy.class) !=  null)
+        {
+            HealthBar healthbar = world1.getHealthBar();
+            if(hitCooldown == 0) 
+            {
+                healthbar.loseHealth();
+            }
+            hitCooldown++;
+            if(hitCooldown >= 200)
+            {
+                hitCooldown = 0;
+            }
+            if(healthbar.health <= 0)
+            {
+                Greenfoot.setWorld(new GameOver());
+            }
+        }
+    }
+ 
 }

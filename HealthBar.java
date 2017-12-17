@@ -8,14 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HealthBar extends Actor
 {
-    int health = 4;
-    int healthWidth = 80;
+    //setting health
+    int health = 100;
+    //setting width and hight of health bar
+    int healthWidth = 100;
     int healthHeight = 15;
-    int hpPixels = healthWidth/health;
-    
+    int hpPixels = (int)healthWidth/health;
+    GreenfootImage healthBars = getImage();
     public HealthBar() 
     {
         update();
+      
     }
     /**
      * Act - do whatever the HealthBar wants to do. This method is called whenever
@@ -28,16 +31,36 @@ public class HealthBar extends Actor
     
     public void update()
     {
-        setImage(new GreenfootImage(healthWidth + 2, healthHeight + 2));
-        GreenfootImage healthBars = getImage();
-        healthBars.setColor(Color.WHITE);
-        healthBars.drawRect(0, 0, healthWidth + 1, healthHeight + 1);
-        healthBars.setColor(Color.RED);
-        healthBars.fillRect(1, 1, health * hpPixels, healthHeight);
+        //creating the health bar
+        if (health <= 65 && health > 40)
+        {
+            setImage(new GreenfootImage(healthWidth + 2, healthHeight + 2));
+            GreenfootImage healthBars = getImage();
+            healthBars.setColor(Color.WHITE);
+            healthBars.drawRect(0, 0, healthWidth + 1, healthHeight + 1); //drawing bar itself
+            healthBars.setColor(Color.YELLOW);
+            healthBars.fillRect(1, 1, health * hpPixels, healthHeight);
+        }
+        else if (health <= 40)
+        {
+            setImage(new GreenfootImage(healthWidth + 2, healthHeight + 2));
+            GreenfootImage healthBars = getImage();
+            healthBars.setColor(Color.WHITE);
+            healthBars.drawRect(0, 0, healthWidth + 1, healthHeight + 1); //redrawing bar 
+            healthBars.fillRect(1, 1, health * hpPixels, healthHeight);
+        }
+        else
+        {
+            setImage(new GreenfootImage(healthWidth + 2, healthHeight + 2));
+            GreenfootImage healthBars = getImage();
+            healthBars.setColor(Color.WHITE);
+            healthBars.drawRect(0, 0, healthWidth + 1, healthHeight + 1); //redrawing bar 
+            healthBars.setColor(Color.GREEN);
+            healthBars.fillRect(1, 1, health * hpPixels, healthHeight);
+        }
     }
-    
     public void loseHealth()
     {
-        health--;
+        health -= 10;
     }
 }

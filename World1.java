@@ -4,8 +4,8 @@ public class World1 extends World
     int time=0;
     int kills=0;
     int spawnrate=1;
-    Player player = new Player();
-    
+    public Player player = new Player();
+    HealthBar healthbar = new HealthBar();
     World nextLevel = null;
     
     Tile tiles[][];
@@ -17,6 +17,9 @@ public class World1 extends World
         makeLV1();
         
         prepare();
+        addObject(new Inventory(), 10, 10);
+        addObject(healthbar, 10, 0);
+        
     }
 
     
@@ -29,7 +32,7 @@ public class World1 extends World
         }
         if(this.time%992==0)
         {
-            this.spawne();
+            this.spawn();
         }
         if(this.kills ==2)
         {
@@ -37,7 +40,7 @@ public class World1 extends World
         }
     }
     
-    public void spawne()
+    public void spawn()
     {
         for(int i=0;i<spawnrate;i++)
         {
@@ -85,7 +88,10 @@ public class World1 extends World
         
         return tiles;
 }
-
+    public HealthBar getHealthBar() 
+    {
+        return healthbar;
+    }
 
    private void prepare()
     {
@@ -100,9 +106,7 @@ public class World1 extends World
         addObject(new Sword(r), x, y);
     }
 
-
-
-    public void gameOver()
+   public void gameOver()
     {
         addObject(new Score(this.kills, this.time/1000), 8, 6);
         Greenfoot.stop();

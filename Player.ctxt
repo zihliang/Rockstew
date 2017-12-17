@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=void\ changeImage()
 comment5.params=x\ y\ c
 comment5.target=greenfoot.Actor\ getOneObjectInFront(int,\ int,\ java.lang.Class)
-numComments=6
+comment6.params=
+comment6.target=void\ hitEnemy()
+numComments=7

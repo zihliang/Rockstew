@@ -23,7 +23,7 @@ public class StartButton extends Actor
         //when button is clicked, everything resets from beginning 
         if(Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new World1());
             
         }
         
