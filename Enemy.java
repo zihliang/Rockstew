@@ -4,6 +4,8 @@ public class Enemy extends Actor
     int timer=1;
     int playerX;
     int playerY;
+    //GameOver gameOver = new GameOver();
+
     public Enemy(int r)
     {
         this.setRotation(r);
@@ -11,7 +13,7 @@ public class Enemy extends Actor
 
     public void act() 
     {
-        //checkGameOver();
+        checkGameOver();
         updatePlayerCor();
         if(this.timer%62==0)
         {
@@ -28,7 +30,9 @@ public class Enemy extends Actor
         Player p=(Player)getOneObjectAtOffset(0, 0, Player.class);
         if(p!=null)
         {
-            ((World1) getWorld()).gameOver();
+            //this.getWorld(this.getWorld().gameOver();
+            //Greenfoot.setWorld(new GameOver());
+
         }
     }
 
@@ -37,15 +41,20 @@ public class Enemy extends Actor
         Sword s=(Sword)getOneObjectAtOffset(0, 0, Sword.class);
         if(s!=null)
         {
-            ((World1) getWorld()).kills++;
-            ((World1) getWorld()).removeObject(this);
+            //((World1) getWorld()).kills++;
+            this.getWorld().removeObject(this);
         }
     }
 
     public void updatePlayerCor()
     {
-        this.playerX=((World1) getWorld()).player.getX();
-        this.playerY=((World1) getWorld()).player.getY();
+        //Find a way to get player coordinates from current level
+        if(!getWorld().getObjects(Player.class).isEmpty())
+        {
+            Actor p = (Actor)getWorld().getObjects(Player.class).get(0);
+            playerX = p.getX();
+            playerY = p.getY();
+        }
     }
 
     public void doRoat()
@@ -138,7 +147,7 @@ public class Enemy extends Actor
         }
 
         if(this.
-getRotation()==90)       
+        getRotation()==90)       
         {
             if (getOneIntersectingObject(Wall.class) == null){
 

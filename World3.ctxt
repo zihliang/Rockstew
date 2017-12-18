@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=World3
-comment1.params=
-comment1.target=World3()
+comment1.params=p
+comment1.target=World3(Player)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ spawne()
 comment4.params=
-comment4.target=Tile[][]\ makeLV2()
+comment4.target=Tile[][]\ makeLV3()
 comment5.params=
 comment5.target=void\ prepare()
 comment6.params=x\ y\ r

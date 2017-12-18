@@ -4,25 +4,23 @@ public class World1 extends World
     int time=0;
     int kills=0;
     int spawnrate=1;
-    public Player player = new Player();
-    HealthBar healthbar = new HealthBar();
+    Player player;
     World nextLevel = null;
-    
+    Utilities u = new Utilities();
     Tile tiles[][];
-    
-    public World1()
+    public World1(Player p)
     {    
+
         super(24, 24, 32); 
-        
-        makeLV1();
-        
+        this.player = u.getPlayer();
+        makeLV1();       
+
         prepare();
-        addObject(new Inventory(), 10, 10);
-        addObject(healthbar, 10, 0);
+        
+        //addObject(new Inventory(), 10, 10);
         
     }
 
-    
     public void act()
     {
         this.time=this.time+16;
@@ -32,15 +30,15 @@ public class World1 extends World
         }
         if(this.time%992==0)
         {
-            this.spawn();
+            this.spawne();
         }
         if(this.kills ==2)
         {
             //Greenfoot.setWorld(new World2());
         }
     }
-    
-    public void spawn()
+
+    public void spawne()
     {
         for(int i=0;i<spawnrate;i++)
         {
@@ -63,8 +61,10 @@ public class World1 extends World
             }
         }
     }
-    
-        private Tile[][] makeLV1(){
+
+    private Tile[][] makeLV1(){
+        Utilities.setLevel(1);
+
         Tile[][] tiles = new Tile[24][24]; //indicates maximum size of map. can be repurposed
 
         for(int i = 0; i < 24; i++){
@@ -74,30 +74,27 @@ public class World1 extends World
                 }
                 else if(i == 23 || j == 23) tiles[i][j] = new Wall(i, j);
                 else tiles[i][j] = new Floor(i, j);                                            
-                
+
                 if(i == 7) tiles[i][j] = new Wall(i, j);
-                
-                if(i==15 && j==15) tiles[i][j] = new Stairs(i, j, false);
-                
+
+                if(i==9 && j==6) tiles[i][j] = new Stairs(i, j, false);
+
                 if(i == 7 && j == 6) tiles [i][j] = new Door(i, j, false);
                 /*if(i == 6 && j == 31) tiles[i][j] = new Door(i, j, false);
                 if(i == 17 && j == 17) tiles[i][j] = new Stairs(i, j, true, 2);*/
                 addObject(tiles[i][j], i, j);
             }
         }
-        
+
         return tiles;
-}
-    public HealthBar getHealthBar() 
-    {
-        return healthbar;
     }
 
-   private void prepare()
+    private void prepare()
     {
+        Utilities.playLevelMusic();
         
         addObject(player, 9, 5);
-        
+
         //Import and draw tiles here
     }
 
@@ -106,14 +103,18 @@ public class World1 extends World
         addObject(new Sword(r), x, y);
     }
 
-   public void gameOver()
+    public void gameOver()
     {
         addObject(new Score(this.kills, this.time/1000), 8, 6);
         Greenfoot.stop();
     }
-    
+
     public void setNextWorld(){
         //getWorld().removeObject(this);
-        Greenfoot.setWorld(new World2());
+        Greenfoot.setWorld(new World2(player));
+    }
+    
+    public Player getPlayer(){
+        return this.player;
 }
 }

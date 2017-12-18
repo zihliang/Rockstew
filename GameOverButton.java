@@ -15,6 +15,7 @@ public class GameOverButton extends Actor
         GreenfootImage contButton = new GreenfootImage("Continue.png");
         this.setImage(contButton);
     }   
+
     public void act()
     {
         //when button is clicked, everything resets from beginning 
@@ -22,6 +23,7 @@ public class GameOverButton extends Actor
         {
             Greenfoot.setWorld(new Start());
         }
-        
+
     }
+
 }

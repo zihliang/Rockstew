@@ -11,7 +11,7 @@ public class Sword extends Actor
         c++;
         if(c==8)
         {
-            ((World1) getWorld()).removeObject(this);
+            this.getWorld().removeObject(this);
         }
     }    
 }

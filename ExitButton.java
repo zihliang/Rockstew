@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ExitButton extends Actor
 {
-    
+
     public ExitButton()
     {
         //sets button image
@@ -16,6 +16,7 @@ public class ExitButton extends Actor
         this.setImage(exitButton);
         exitButton.scale(100,65);
     }
+
     /**
      * Act - do whatever the ExitButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -25,7 +26,7 @@ public class ExitButton extends Actor
         //when button is clicked, everything resets from beginning 
         if(Greenfoot.mouseClicked(this))
         {
-           System.exit(0);
+            System.exit(0);
         }
     }    
 }

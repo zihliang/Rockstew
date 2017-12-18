@@ -1,16 +1,17 @@
 import greenfoot.*;
-public class World2 extends World1
+public class World2 extends World
 {
     int time=0;
     int kills=0;
     int spawnrate=1;
-    Player player = new Player();
+    Player player;
 
     Tile tiles[][];
 
-    public World2()
+    public World2(Player p)
     {        
-        //super(24, 24, 32);
+        super(24, 24, 32);
+        this.player = p;
         makeLV2();
 
         prepare();
@@ -29,7 +30,7 @@ public class World2 extends World1
         }
         if(this.kills ==2)
         {
-            Greenfoot.setWorld(new World3());
+            Greenfoot.setWorld(new World3(player));
         }
     }
 
@@ -41,7 +42,7 @@ public class World2 extends World1
             int a=(Greenfoot.getRandomNumber(1));
             if(a==0)
             {
-                addObject(new Enemy(90), 5, 5);
+                //addObject(new Enemy(90), 5, 5);
             }
             if(a==1)
             {
@@ -59,6 +60,7 @@ public class World2 extends World1
     }
 
     private Tile[][] makeLV2(){
+        Utilities.setLevel(2);
         Tile[][] tiles = new Tile[24][24]; //indicates maximum size of map. can be repurposed
 
         for(int i = 0; i < 24; i++){
@@ -69,8 +71,11 @@ public class World2 extends World1
                 else if(i == 23 || j == 23) tiles[i][j] = new Wall(i, j);
                 else tiles[i][j] = new Floor(i, j);                                            
 
-                if(i == 8) tiles[i][j] = new Wall(i, j); 
+                if(j == 6 || j == 20) tiles[i][j] = new Wall(i, j);
+                tiles[2][6] = new Door(i, j, false);
+                tiles[20][20] = new Door(i, j, false);
                 if(i==10 && j ==10)tiles[i][j] = new Stairs(i, j, false);
+                if(i==11 && j==10) tiles[i][j] = new Stairs_up(i,j,false);
                 //if(i == 7 && j == 6) tiles [i][j] = new Door(i, j, false);
                 /*if(i == 6 && j == 31) tiles[i][j] = new Door(i, j, false);
                 if(i == 17 && j == 17) tiles[i][j] = new Stairs(i, j, true, 2);*/
@@ -101,6 +106,6 @@ public class World2 extends World1
     }
 
     public void setNextWorld(){
-        Greenfoot.setWorld(new World3());
+        Greenfoot.setWorld(new World3(player));
     }
 }
